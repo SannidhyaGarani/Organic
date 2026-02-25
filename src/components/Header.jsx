@@ -22,9 +22,8 @@ const Header = () => {
   ];
 
   // Helper for icon styling based on scroll state
-  const iconClass = `p-2 transition-all duration-300 hover:scale-110 active:scale-95 ${
-    isScrolled ? 'text-[#F7F6F2] hover:text-[#6E8B3D]' : 'text-[#1E3D2B] hover:text-[#6E8B3D]'
-  }`;
+  const iconClass = `p-2 transition-all duration-300 hover:scale-110 active:scale-95 ${isScrolled ? 'text-[#F7F6F2] hover:text-[#6E8B3D]' : 'text-[#1E3D2B] hover:text-[#6E8B3D]'
+    }`;
 
   return (
     <>
@@ -77,16 +76,16 @@ const Header = () => {
 
             {/* Cart */}
             <Link to="/cart" className="relative group p-2">
-              <ShoppingBag 
-                size={20} 
-                strokeWidth={1.5} 
-                className={`transition-all duration-300 group-hover:scale-110 ${isScrolled ? 'text-[#F7F6F2]' : 'text-[#1E3D2B]'}`} 
+              <ShoppingBag
+                size={20}
+                strokeWidth={1.5}
+                className={`transition-all duration-300 group-hover:scale-110 ${isScrolled ? 'text-[#F7F6F2]' : 'text-[#1E3D2B]'}`}
               />
               <span className="absolute top-1 right-1 w-2 h-2 bg-[#6E8B3D] rounded-full border border-white" />
             </Link>
 
             {/* --- MOBILE TOGGLE --- */}
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className={`p-2 lg:hidden transition-colors duration-500 ml-2
                 ${isScrolled ? 'text-[#F7F6F2]' : 'text-[#1E3D2B]'}`}
@@ -98,46 +97,77 @@ const Header = () => {
       </header>
 
       {/* --- MOBILE EDITORIAL OVERLAY --- */}
-      <div className={`
-        fixed inset-0 z-[90] bg-[#F7F6F2] transition-all duration-700 ease-in-out lg:hidden
-        ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}
-      `}>
-        {/* Subtle texture for mobile overlay */}
+      <div
+        className={`
+    fixed inset-0 z-[90] bg-[#F7F6F2] transition-all duration-700 ease-in-out lg:hidden
+    ${isMobileMenuOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full pointer-events-none'}
+  `}
+      >
+        {/* Subtle texture */}
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
-        
-        <div className="h-full flex flex-col justify-center px-12 space-y-12 bg-[#F7F6F2]">
-          <div className="space-y-2">
-            <p className="text-[#6E8B3D] text-[10px] font-black uppercase tracking-[0.5em]">Collections</p>
-            <div className="w-12 h-[1px] bg-[#1E3D2B]/20" />
+
+        <div className="h-full flex flex-col justify-center px-8 bg-[#F7F6F2]">
+
+          {/* Section title */}
+          <div className="mb-10">
+            <p className="text-[#6E8B3D] text-[9px] font-black uppercase tracking-[0.45em]">
+              Collections
+            </p>
+            <div className="mt-2 w-10 h-[1px] bg-[#1E3D2B]/20" />
           </div>
 
-          <nav className="flex flex-col space-y-6">
+          {/* Navigation */}
+          <nav className="flex flex-col space-y-5">
             {navLinks.map((link, i) => (
               <Link
                 key={link.name}
                 to={link.to}
                 onClick={closeMenu}
-                className="group flex items-center justify-between"
-                style={{ transitionDelay: `${i * 100}ms` }}
+                className="group flex items-center justify-between py-2"
+                style={{ transitionDelay: `${i * 80}ms` }}
               >
-                <span className="text-5xl font-light text-[#1E3D2B] tracking-tighter group-hover:italic transition-all">
+                <span className="text-2xl font-medium text-[#1E3D2B] tracking-tight transition-all group-hover:translate-x-1">
                   {link.name}
                 </span>
-                <ArrowRight className="text-[#6E8B3D] opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all" />
+                <ArrowRight
+                  size={16}
+                  className="text-[#6E8B3D] opacity-0 group-hover:opacity-100 transition-all"
+                />
               </Link>
             ))}
           </nav>
 
-          <div className="pt-12 border-t border-[#1E3D2B]/10 flex flex-col gap-8">
-            <div className="flex gap-10">
-               <Link to="/account" onClick={closeMenu} className="text-[10px] font-black uppercase tracking-widest text-[#1E3D2B]">Account</Link>
-               <Link to="/wishlist" onClick={closeMenu} className="text-[10px] font-black uppercase tracking-widest text-[#1E3D2B]">Wishlist</Link>
-               <Link to="/cart" onClick={closeMenu} className="text-[10px] font-black uppercase tracking-widest text-[#1E3D2B]">Cart (0)</Link>
+          {/* Bottom links */}
+          <div className="mt-14 pt-8 border-t border-[#1E3D2B]/10 flex flex-col gap-6">
+            <div className="flex gap-8">
+              <Link
+                to="/account"
+                onClick={closeMenu}
+                className="text-[8px] font-black uppercase tracking-widest text-[#1E3D2B]"
+              >
+                Account
+              </Link>
+              <Link
+                to="/wishlist"
+                onClick={closeMenu}
+                className="text-[8px] font-black uppercase tracking-widest text-[#1E3D2B]"
+              >
+                Wishlist
+              </Link>
+              <Link
+                to="/cart"
+                onClick={closeMenu}
+                className="text-[8px] font-black uppercase tracking-widest text-[#1E3D2B]"
+              >
+                Cart (0)
+              </Link>
             </div>
-            <p className="text-[#1E3D2B]/40 text-[10px] font-medium leading-relaxed uppercase tracking-widest">
+
+            <p className="text-[#1E3D2B]/40 text-[8px] font-medium leading-relaxed uppercase tracking-widest">
               Ethically Sourced <br /> Lab Verified Ayurveda
             </p>
           </div>
+
         </div>
       </div>
     </>

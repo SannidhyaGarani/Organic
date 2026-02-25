@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Sparkles, Leaf } from 'lucide-react';
 import { Link } from "react-router-dom";
 
 const categories = [
@@ -7,66 +7,72 @@ const categories = [
     title: "Organic Powders",
     subtitle: "Fine Botanical Milling",
     image: "https://images.unsplash.com/photo-1515696955266-4f67e13219e8?q=80&w=1200",
-    gridClass: "md:col-span-8 md:row-span-2",
-    tag: "Most Popular"
+    gridClass: "md:col-span-7 lg:col-span-8",
+    tag: "Trending"
   },
   {
     title: "Superfoods",
     subtitle: "Raw Vitality",
-    image: "img/a (3).jpeg",
-    gridClass: "md:col-span-4 md:row-span-1",
+    image: "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?q=80&w=1000",
+    gridClass: "md:col-span-5 lg:col-span-4",
   },
   {
     title: "Herbal Blends",
     subtitle: "Ancient Wisdom",
     image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?q=80&w=1000",
-    gridClass: "md:col-span-4 md:row-span-2",
+    gridClass: "md:col-span-5 lg:col-span-4",
   },
   {
     title: "Wellness Kits",
     subtitle: "Curated Rituals",
     image: "https://images.unsplash.com/photo-1611080541599-8c6dbde6ed28?q=80&w=1000",
-    gridClass: "md:col-span-8 md:row-span-1",
+    gridClass: "md:col-span-7 lg:col-span-8",
   }
 ];
 
 const CategoryCard = ({ category }) => (
-  <div className={`${category.gridClass} group relative overflow-hidden rounded-[3rem] bg-white border border-[#1E3D2B]/5 shadow-sm min-h-[400px]`}>
-    {/* Image Treatment */}
-    <div className="absolute inset-0 transition-transform duration-[3s] ease-out group-hover:scale-110">
+  <div className={`${category.gridClass} group relative overflow-hidden rounded-[2rem] bg-[#F2F0EA] min-h-[450px] md:min-h-[500px] flex flex-col`}>
+    
+    {/* Background Image with Ken Burns Effect */}
+    <div className="absolute inset-0 transition-transform duration-[4s] ease-out group-hover:scale-110">
       <img
         src={category.image}
         alt={category.title}
-        className="w-full h-full object-cover"
+        className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000"
       />
-      {/* Editorial Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1E3D2B]/90 via-[#1E3D2B]/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Soft Vignette instead of heavy black gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-[#1E3D2B]/60 opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
     </div>
 
-    {/* Content Overlay */}
-    <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-      <div className="relative z-10 space-y-4">
-        {category.tag && (
-          <span className="inline-block px-3 py-1 rounded-full bg-[#6E8B3D] text-white text-[9px] font-black uppercase tracking-widest mb-2">
-            {category.tag}
-          </span>
-        )}
-        
-        <div className="space-y-1">
-          <p className="text-[10px] font-black uppercase tracking-[0.4em] text-white/60 group-hover:text-[#6E8B3D] transition-colors duration-500">
-            {category.subtitle}
-          </p>
-          <h3 className="text-4xl md:text-5xl font-light text-white leading-none tracking-tighter">
-            {category.title.split(' ')[0]} <br />
-            <span className="font-black italic text-[#6E8B3D]">{category.title.split(' ')[1]}</span>
-          </h3>
-        </div>
+    {/* Top Bar: Tag */}
+    <div className="relative z-10 p-6 md:p-10 flex justify-between items-start">
+      {category.tag ? (
+        <span className="px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[9px] font-bold uppercase tracking-[0.2em]">
+          {category.tag}
+        </span>
+      ) : <div />}
+      
+      {/* Floating Action Button */}
+      <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white opacity-0 -translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 hover:bg-white hover:text-[#1E3D2B]">
+        <ArrowUpRight size={20} />
+      </div>
+    </div>
 
-        {/* Action Bar */}
-        <div className="flex items-center justify-between pt-6 border-t border-white/10 mt-6 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700">
-          <span className="text-[10px] font-black uppercase tracking-widest text-white">View Collection</span>
-          <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-[#1E3D2B] rotate-45 group-hover:rotate-0 transition-transform duration-500">
-            <ArrowUpRight size={18} />
+    {/* Bottom Content: The Glass Card */}
+    <div className="mt-auto relative z-10 p-4">
+      <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-[1.5rem] p-6 md:p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-700">
+        <p className="text-[10px] font-bold uppercase tracking-[0.4em] text-[#6E8B3D] mb-3">
+          {category.subtitle}
+        </p>
+        
+        <h3 className="text-3xl md:text-4xl font-serif italic text-white leading-tight">
+          {category.title}
+        </h3>
+
+        <div className="max-h-0 overflow-hidden group-hover:max-h-20 transition-all duration-700 ease-in-out">
+          <div className="pt-4 flex items-center gap-2 text-white/60 text-[10px] uppercase tracking-widest font-medium">
+            <span>Explore Collection</span>
+            <div className="w-6 h-[1px] bg-[#6E8B3D]" />
           </div>
         </div>
       </div>
@@ -76,40 +82,50 @@ const CategoryCard = ({ category }) => (
 
 const CategorySection = () => {
   return (
-    <section className="py-24 bg-[#F7F6F2] px-6">
+    <section className="py-32 bg-[#F7F6F2] px-6 lg:px-12">
       <div className="max-w-[1300px] mx-auto">
         
         {/* --- MAGAZINE HEADER --- */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 border-b border-[#1E3D2B]/5 pb-12">
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mb-20 items-end">
+          <div className="lg:col-span-8 space-y-6">
             <div className="flex items-center gap-3">
-              <Sparkles size={18} className="text-[#6E8B3D]" />
-              <span className="text-[10px] font-black uppercase tracking-[0.4em] text-[#6E8B3D]">Botanical Curations</span>
+              <div className="w-8 h-[1px] bg-[#6E8B3D]" />
+              <span className="text-[11px] font-bold uppercase tracking-[0.5em] text-[#6E8B3D]">Botanical Journal</span>
             </div>
-            <h2 className="text-5xl md:text-8xl font-light text-[#1E3D2B] leading-[0.85] tracking-tighter">
-              The <span className="font-black italic">Collections</span>
+            <h2 className="text-6xl md:text-9xl font-serif text-[#1E3D2B] leading-[0.8] tracking-tighter">
+              The <span className="italic font-light">Fine</span> <br /> 
+              <span className="relative">
+                 Harvests
+                 <Leaf className="absolute -right-12 top-0 text-[#6E8B3D]/20 rotate-12 hidden md:block" size={80} />
+              </span>
             </h2>
           </div>
           
-          <div className="max-w-sm">
-            <p className="text-base text-[#6B4F3F] leading-relaxed opacity-70 italic">
-              "We’ve categorized our harvests to help you find the specific ritual your body is calling for."
+          <div className="lg:col-span-4 pb-4">
+            <p className="text-lg text-[#6B4F3F]/70 leading-relaxed font-light border-l border-[#1E3D2B]/10 pl-8">
+              A curated selection of nature's most potent remedies, harvested with intentionality and scientific rigor.
             </p>
           </div>
         </div>
 
-        {/* --- ASYMMETRIC GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[350px]">
+        {/* --- RESPONSIVE ASYMMETRIC GRID --- */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 lg:gap-10">
           {categories.map((cat, idx) => (
             <CategoryCard key={idx} category={cat} />
           ))}
         </div>
 
-        {/* --- GRID FOOTER --- */}
-        <div className="mt-25 flex justify-center">
-          <Link to="/shop" className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-[#1E3D2B] hover:text-[#6E8B3D] transition-colors">
-            Explore All Products
-            <div className="w-8 h-[1px] bg-[#1E3D2B] group-hover:w-12 group-hover:bg-[#6E8B3D] transition-all" />
+        {/* --- CENTERED FOOTER ACTION --- */}
+        <div className="mt-20 flex flex-col items-center gap-6">
+          <div className="h-20 w-[1px] bg-gradient-to-b from-[#1E3D2B]/20 to-transparent" />
+          <Link 
+            to="/shop" 
+            className="group relative px-10 py-4 overflow-hidden rounded-full border border-[#1E3D2B]/10 transition-all hover:border-[#6E8B3D]"
+          >
+            <span className="relative z-10 text-[11px] font-bold uppercase tracking-[0.4em] text-[#1E3D2B] group-hover:text-[#6E8B3D]">
+              View All Rituals
+            </span>
+            <div className="absolute inset-0 bg-[#6E8B3D]/5 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
           </Link>
         </div>
       </div>
