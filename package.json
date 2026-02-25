@@ -41,7 +41,6 @@
     "vite": "^8.0.0-beta.13"
   },
   "overrides": {
-    "vite": "^8.0.0-beta.13",
-    "@firebase/database-compat": "2.1.1"
+    "vite": "^8.0.0-beta.13"
   }
 }
