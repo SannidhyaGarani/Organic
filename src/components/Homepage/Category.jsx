@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const categories = [
   {
@@ -12,7 +13,7 @@ const categories = [
   {
     title: "Superfoods",
     subtitle: "Raw Vitality",
-    image: "https://images.unsplash.com/photo-1615485242299-4c36ad99796d?q=80&w=1000",
+    image: "img/a (3).jpeg",
     gridClass: "md:col-span-4 md:row-span-1",
   },
   {
@@ -106,10 +107,10 @@ const CategorySection = () => {
 
         {/* --- GRID FOOTER --- */}
         <div className="mt-25 flex justify-center">
-            <button className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-[#1E3D2B] hover:text-[#6E8B3D] transition-colors">
-                Explore All Products
-                <div className="w-8 h-[1px] bg-[#1E3D2B] group-hover:w-12 group-hover:bg-[#6E8B3D] transition-all" />
-            </button>
+          <Link to="/shop" className="group flex items-center gap-4 text-[11px] font-black uppercase tracking-[0.4em] text-[#1E3D2B] hover:text-[#6E8B3D] transition-colors">
+            Explore All Products
+            <div className="w-8 h-[1px] bg-[#1E3D2B] group-hover:w-12 group-hover:bg-[#6E8B3D] transition-all" />
+          </Link>
         </div>
       </div>
     </section>

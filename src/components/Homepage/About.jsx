@@ -92,9 +92,7 @@ const BrandTrust = () => {
              </div>
           </div>
 
-          <button className="px-8 py-4 rounded-xl border border-[#1E3D2B] text-[#1E3D2B] text-[10px] font-black uppercase tracking-widest hover:bg-[#1E3D2B] hover:text-white transition-all">
-            View Lab Reports
-          </button>
+       
         </div>
       </div>
     </section>

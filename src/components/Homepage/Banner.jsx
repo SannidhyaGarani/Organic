@@ -59,7 +59,7 @@ const PromoBanner = () => {
           {/* Image Side - Constrained Parallax */}
           <div className="lg:col-span-5 h-[400px] lg:h-full relative overflow-hidden bg-[#E5E3DB]">
             <img 
-              src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&q=80&w=1600" 
+              src="img/a (5).jpeg" 
               className="w-full h-full object-cover mix-blend-multiply opacity-90 transition-transform duration-200 ease-out scale-110"
               style={{
                 transform: `scale(1.1) translate(${mousePosition.x * 0.2}px, ${mousePosition.y * 0.2}px)`
